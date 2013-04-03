@@ -1,0 +1,45 @@
+<div id="header">
+	<div id="title">			
+		De La Rue
+	</div>
+	<div class="clear"></div>
+	<div id="descr">
+		Discover street artists. Promote performances. Keep the streets alive.
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="intro">
+	<div id="intro_box" class="well">
+		<div id="intro_box_title">
+			Events near you
+		</div>
+		<div id="intro_box_list">
+			<ul>
+				<li>Check</li>
+				<li>This</li>
+				<li>Out</li>
+				<li>Yo</li>
+			</ul>
+		</div>
+	</div>
+	<div id="intro_box" class="well">
+		<div id="login">
+			<div id="login_title">
+				Log In
+			</div>
+			<div id="login_field">
+				<%= form_tag 'login_url' do %>
+					<%= label_tag :username, "Username/Email:" %>
+					<%= text_field_tag :username %><br />
+					<%= label_tag :password, "Password:" %>
+					<%= text_field_tag :password %><br />
+					<%= submit_tag "Enter" %>
+				<% end %>
+			</div>
+		</div>
+		<div id="signup">
+			<%= link_to "Sign Up", 'signup' %>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

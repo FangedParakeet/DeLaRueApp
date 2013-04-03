@@ -1,5 +1,7 @@
 DeLaRueApp::Application.routes.draw do
 
-  root to: 'pages#index'
+  root to: 'pages#home'
+  
+  get 'search' => 'pages#search'
 
 end
