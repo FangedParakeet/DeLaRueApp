@@ -9,7 +9,7 @@
 	<div class="clear"></div>
 </div>
 <div id="intro">
-	<div id="intro_box" class="well">
+	<div id="intro_map" class="well">
 		<div id="intro_box_title">
 			Events near you
 		</div>
@@ -22,13 +22,13 @@
 			</ul>
 		</div>
 	</div>
-	<div id="intro_box" class="well">
+	<div id="intro_log" class="well">
 		<div id="login">
 			<div id="login_title">
 				Log In
 			</div>
 			<div id="login_field">
-				<%= form_tag 'login_url' do %>
+				<%= form_tag login_url do %>
 					<%= label_tag :username, "Username/Email:" %>
 					<%= text_field_tag :username %><br />
 					<%= label_tag :password, "Password:" %>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div id="signup">
-			<%= link_to "Sign Up", 'signup' %>
+			<%= link_to "Sign Up", signup_url %>
 		</div>
 	</div>
 	<div class="clear"></div>

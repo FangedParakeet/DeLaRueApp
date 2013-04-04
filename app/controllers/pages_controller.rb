@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     
   end
   
-  def search
+  def main
     
   end
   

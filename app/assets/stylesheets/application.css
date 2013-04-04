@@ -62,7 +62,7 @@
 /*** GLOBAL ***/
 
 .clear {
-    clear:both;
+    clear: both;
 }
 
 body {
@@ -116,8 +116,15 @@ body {
     margin: 0px auto;
 }
 
-#intro_box {
-    width: 35%;
+#intro_map {
+    width: 50%;
+    float: left;
+    margin: 3em;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#intro_log {
+    width: 25%;
     float: left;
     margin: 3em;
     background: rgba(0, 0, 0, 0.5);
@@ -141,4 +148,16 @@ body {
     float: left;
     background: rgba(0, 0, 0, 0.5);
     margin: 3em;
+}
+
+#signup {
+    width: 50%;
+    margin: 0px auto;
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+form label {
+    font-size: 1.5em;
 }

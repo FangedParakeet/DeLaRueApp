@@ -3,7 +3,8 @@ window.DeLaRueApp =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: -> 
+    # alert 'Hello from Backbone!'
 
 $(document).ready ->
   DeLaRueApp.initialize()

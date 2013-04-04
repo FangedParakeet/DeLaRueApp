@@ -1,0 +1,13 @@
+<div id="header">
+	<div id="title">			
+		De La Rue
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="content">
+	<div id="signup" class="well">
+		<%= form_for @user do |f| %>
+			<%= render 'form', :f => f %>
+		<% end %>
+	</div>
+</div>
