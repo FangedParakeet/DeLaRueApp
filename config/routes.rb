@@ -4,9 +4,11 @@ DeLaRueApp::Application.routes.draw do
   
   get 'main' => 'pages#main', as: :main
   
-  get 'login' => 'sessions#create', as: :login
+  post 'login' => 'sessions#create', as: :login
   
   get 'signup' => 'users#new', as: :signup
+  
+  get 'logout' => 'sessions#destroy', as: :logout
   
   resources :users
 

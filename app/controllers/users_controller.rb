@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
     respond_to do |format|
       format.html
     end
@@ -31,46 +30,64 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.type == "Artist"
+    parameters = params[:user]
+    @user = User.new
+    @user.email = parameters[:email]
+    @user.password = parameters[:password]
+    @user.password_confirmation = parameters[:password_confirmation]
+    unless parameters[:firstname].empty?
+      @user.firstname = parameters[:firstname]
+      @user.display_name = true
+    end
+    unless parameters[:lastname].empty?
+      @user.lastname = parameters[:lastname]
+    end
+    unless parameters[:username].empty?
+      @user.username = parameters[:username]
+      @user.use_uid = true
+    end
+    unless parameters[:city].empty?
+      @user.city = parameters[:city]
+      @user.display_location = true
+    end
+    unless parameters[:country].empty?
+      @user.country = parameters[:country]
+    end
+    unless parameters[:user_type] == "Artist"
+      @user.user_type = parameters[:user_type]
       @artist = Artist.new
     else
-      @artist = nil
+      @user.user_type = "Follower"
+      @artist = false
     end
-
+    
     respond_to do |format|
-      if @artist
-        if @user.save
+      if @user.save
+        if @artist
           @artist.user_id = @user.id
           if @artist.save
-            session[:uid] = @user.id
-            format.html { redirect_to main_url, notice: 'User was successfully created.' }
+            session[:id] = @user.id
+            format.html { redirect_to main_url, notice: 'All set!' }
           else
             format.html { render action: "new" }
-            format.json { render json: @artist.errors, status: :unprocessable_entity }
+            format.json { render json: @artist.errors, status: :unproccessable_entity}
           end
         else
-          format.html { render action: "new" }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
+          session[:id] = @user.id
+          format.html { redirect_to main_url, notice: 'All set!' }
         end
       else
-        if @user.save
-          session[:uid] = @user.id
-          format.html { redirect_to main_url, notice: 'User was successfully created.' }
-          format.json { render json: @user, status: :created, location: @user }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unproccessable_entity}
       end
     end
   end
 
   def update
-      if @user.type == "Artist"
+      if @user.user_type == "Artist"
         respond_to do |format|
           if @user.update_attributes(params[:user])
-            if @user.ftype == "Fan"
+            if @user.user_type == "Fan"
               @user.artists.first.destroy
             end
             format.js
@@ -81,7 +98,7 @@ class UsersController < ApplicationController
       else
         respond_to do |format|
           if @user.update_attributes(params[:user])
-            if @user.type == "Artist"
+            if @user.user_type == "Artist"
               @artist = Artist.new
               @artist.user_id = @user.id
               if @artist.save
@@ -102,7 +119,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.type == "Artist"
+    if @user.user_type == "Artist"
       @artist = @user.artists.first
     end
     @user.destroy

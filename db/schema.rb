@@ -11,10 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403235546) do
+ActiveRecord::Schema.define(:version => 20130405012021) do
+
+  create_table "artists", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "likes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.datetime "date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "name"
+    t.boolean  "approved"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.text     "content"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
-    t.string   "type"
+    t.string   "user_type"
     t.string   "email"
     t.string   "firstname"
     t.string   "lastname"
@@ -25,9 +62,11 @@ ActiveRecord::Schema.define(:version => 20130403235546) do
     t.string   "country"
     t.boolean  "display_location"
     t.string   "photo"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "password_digest"
+    t.string   "password"
+    t.string   "password_confirmation"
   end
 
 end
