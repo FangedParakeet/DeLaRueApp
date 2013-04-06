@@ -154,10 +154,16 @@ body {
     width: 50%;
     margin: 0px auto;
     margin-top: 30px;
+    margin-bottom: 30px;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
-form label {
+#signup form label {
     font-size: 1.5em;
 }
+
+#signup .field {
+    margin-bottom: 1em;
+}
+
