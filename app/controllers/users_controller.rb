@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   def create
     parameters = params[:user]
     @user = User.new
-    unless User.
     @user.email = parameters[:email]
     @user.password = parameters[:password]
     @user.password_confirmation = parameters[:password_confirmation]
